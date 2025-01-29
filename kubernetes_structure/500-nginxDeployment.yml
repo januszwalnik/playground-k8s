@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-app
+  namespace: dev-personal-namespace
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-app
+  template:
+    metadata:
+      labels:
+        app: nginx-app
+    spec:
+      containers:
+      - name: my-nginx-container
+        image: nginx:latest
+        resources:
+          requests:
+            cpu: "250m"      # Requesting 250m (0.25 CPU) for the container
+            memory: "256Mi"   # Requesting 256 MiB memory for the container
+          limits:
+            cpu: "500m"       # Limiting the container to 500m (0.5 CPU)
+            memory: "512Mi"
+        envFrom:
+        - configMapRef:
+            name: nginx-env-variables 
+        volumeMounts:
+        - name: nginx-config
+          mountPath: /etc/nginx/conf.d
+        ports:
+        - containerPort: 80
+        env:
+        - name: ENV
+          value: DEV
+      volumes:
+      - name: nginx-config
+        configMap:
+          name: nginx-config
+...

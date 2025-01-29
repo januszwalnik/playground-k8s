@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: argocd-server-loadbalancer
+  namespace: dev-argo-cd
+spec:
+  selector:
+    app.kubernetes.io/name: argocd-server
+  ports:
+  - protocol: TCP
+    port: 8090
+    targetPort: 443
+  type: LoadBalancer
+...
