@@ -11,3 +11,4 @@ spec:
     limits.cpu: "2"
     limits.memory: 2Gi
     requests.nvidia.com/gpu: 4
+...
