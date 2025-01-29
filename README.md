@@ -3,12 +3,12 @@
 ### Usefull commands
 
 #### Switching context
-
+```bash
 k config get-contexts 
 k config use-context <context>
 
 k config set-context --current --namespace=<namespace-name>
-
+```
 #### Retrieving the information about containers
 Get only name of the container inside the pod:
 
