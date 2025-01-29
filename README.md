@@ -24,9 +24,8 @@ k delete pod $(k get pods -o jsonpath='{.items[0].metadata.name}')
 
 ```
 
-
-
 #### General information and troubleshooting
+```bash
 k get event -> Provide information about what happening in the cluster
 
 k logs <pod-name> -> Providing logs from the pod
@@ -37,7 +36,7 @@ k port-forward pod/<pod-name> <local-port>:<pod-port>
 
 example for nginx:
 k port-forward svc/nginx-service 8080:80 -n dev-personal-namespace
-
+```
 
 #### How to import configuration into the ConfigMap
 ```bash
